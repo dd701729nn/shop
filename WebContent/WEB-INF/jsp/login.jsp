@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0080)http://localhost:8080/mango/login.jhtml?redirectUrl=%2Fmango%2Fcart%2Flist.jhtml -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -27,7 +28,7 @@
 					<img src="${pageContext.request.contextPath}/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障">
 </div>	</div>
 	
-	<%@include file="menu.jsp" %>
+	<%@ include file="menu.jsp" %>
 	
 </div>	<div class="container login">
 		<div class="span12">
@@ -39,12 +40,14 @@
 				<div class="main">
 					<div class="title">
 						<strong>会员登录</strong>USER LOGIN 
+						
 					</div>
-					<form id="loginForm"  method="post" novalidate="novalidate">
+					<div><s:actionerror /></div>
+					<form id="loginForm" action="${ pageContext.request.contextPath }/user_login.action"  method="post" novalidate="novalidate">
 						<table>
 							<tbody><tr>
 								<th>
-										用户名/E-mail:
+										用户名:
 								</th>
 								<td>
 									<input type="text" id="username" name="username" class="text" maxlength="20">
@@ -59,16 +62,7 @@
 									<input type="password" id="password" name="password" class="text" maxlength="20" autocomplete="off">
 								</td>
 							</tr>
-								<tr>
-									<th>
-										验证码:
-									</th>
-									<td>
-										<span class="fieldSet">
-											<input type="text" id="captcha" name="captcha" class="text captcha" maxlength="4" autocomplete="off"><img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/image/captcha.jhtml" title="点击更换验证码">
-										</span>
-									</td>
-								</tr>
+								
 							<tr>
 								<th>&nbsp;
 									

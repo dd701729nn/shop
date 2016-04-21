@@ -62,6 +62,11 @@
 	
 	</bean>
 	
+	<!-- 配置验证码Action -->
+	<bean id="checkImgAction" class="cn.itcast.shop.user.action.CheckImgAction" scope="prototype">
+		
+	</bean>
+	
 	<!-- 用户模块的Action -->
 	<bean id="userAction" class="cn.itcast.shop.user.action.UserAction" scope="prototype">
 		<!-- 注入Service -->
@@ -71,14 +76,13 @@
 	
 	<!-- Service的配置  ===========================-->
 	<bean id="userService" class="cn.itcast.shop.user.service.UserService">
-		<!-- 注入Dao -->
 		<property name="userDao" ref="userDao"/>
 	</bean>
+	
 	
 	
 	<!-- Dao的配置  ===========================-->
 	<bean id="userDao" class="cn.itcast.shop.user.dao.UserDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-
 </beans>

@@ -11,87 +11,135 @@ import cn.itcast.shop.user.vo.User;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+
 /**
- * ÓÃ»§Ä£¿éµÄActionµÄÀá
- * @author Administrator
- *
+ * ç”¨æˆ·æ¨¡å—Actionçš„ç±»
+ * 
+ * @author ä¼ æ™º.éƒ­å˜‰
+ * 
  */
-public class UserAction extends ActionSupport implements ModelDriven<User>{
-	
+public class UserAction extends ActionSupport implements ModelDriven<User> {
+	// æ¨¡å‹é©±åŠ¨ä½¿ç”¨çš„å¯¹è±¡
 	private User user = new User();
-	
-	@Override
+
 	public User getModel() {
 		return user;
 	}
-	//×¢ÈëUserService
+	// æ¥æ”¶éªŒè¯ç :
+	private String checkcode;
+	
+	public void setCheckcode(String checkcode) {
+		this.checkcode = checkcode;
+	}
+	// æ³¨å…¥UserService
 	private UserService userService;
-	public void setUserService(UserService userService){
+
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	/**
-	 * Ìø×ªµ½×¢²áÒ³ÃæµÄÖ´ĞĞ·½·¨
-	 * @return
+	 * è·³è½¬åˆ°æ³¨å†Œé¡µé¢çš„æ‰§è¡Œæ–¹æ³•
 	 */
-	public String registPage(){
-		
+	public String registPage() {
 		return "registPage";
 	}
-	
+
 	/**
-	 * Ìø×ªµ½µÇÂ½Ò³ÃæµÄÖ´ĞĞ·½·¨
-	 */
-	public String loginPage(){
-		
-		return "loginPage";
-	}
-	
-	/**
-	 * ajax½øĞĞÒì²½Ğ£ÑéÓÃ»§ÃûÖ´ĞĞµÄ·½·¨
-	 * @throws IOException 
+	 * AJAXè¿›è¡Œå¼‚æ­¥æ ¡éªŒç”¨æˆ·åçš„æ‰§è¡Œæ–¹æ³•
+	 * 
+	 * @throws IOException
 	 */
 	public String findByName() throws IOException {
-		// µ÷ÓÃService½øĞĞ²éÑ¯:
+		// è°ƒç”¨Serviceè¿›è¡ŒæŸ¥è¯¢:
 		User existUser = userService.findByUsername(user.getUsername());
-		// »ñµÃresponse¶ÔÏó,ÏîÒ³ÃæÊä³ö:
+		// è·å¾—responseå¯¹è±¡,é¡¹é¡µé¢è¾“å‡º:
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
-		// ÅĞ¶Ï
+		// åˆ¤æ–­
 		if (existUser != null) {
-			// ²éÑ¯µ½¸ÃÓÃ»§:ÓÃ»§ÃûÒÑ¾­´æÔÚ
-			response.getWriter().println("<font color='red'>ÓÃ»§ÃûÒÑ¾­´æÔÚ</font>");
+			// æŸ¥è¯¢åˆ°è¯¥ç”¨æˆ·:ç”¨æˆ·åå·²ç»å­˜åœ¨
+			response.getWriter().println("<font color='red'>ç”¨æˆ·åå·²ç»å­˜åœ¨</font>");
 		} else {
-			// Ã»²éÑ¯µ½¸ÃÓÃ»§:ÓÃ»§Ãû¿ÉÒÔÊ¹ÓÃ
-			response.getWriter().println("<font color='green'>ÓÃ»§Ãû¿ÉÒÔÊ¹ÓÃ</font>");
+			// æ²¡æŸ¥è¯¢åˆ°è¯¥ç”¨æˆ·:ç”¨æˆ·åå¯ä»¥ä½¿ç”¨
+			response.getWriter().println("<font color='green'>ç”¨æˆ·åå¯ä»¥ä½¿ç”¨</font>");
 		}
 		return NONE;
 	}
-	
-	public String regist(){
+
+	/**
+	 * ç”¨æˆ·æ³¨å†Œçš„æ–¹æ³•:
+	 */
+	public String regist() {
+		// åˆ¤æ–­éªŒè¯ç ç¨‹åº:
+		// ä»sessionä¸­è·å¾—éªŒè¯ç çš„éšæœºå€¼:
+		String checkcode1 = (String) ServletActionContext.getRequest()
+				.getSession().getAttribute("checkcode");
+		if(!checkcode.equalsIgnoreCase(checkcode1)){
+			this.addActionError("éªŒè¯ç è¾“å…¥é”™è¯¯!");
+			return "checkcodeFail";
+		}
 		userService.save(user);
-		this.addActionMessage("×¢²á³É¹¦£¬ÇëÈ¥ÓÊÏä¼¤»î£¡£¡");
+		this.addActionMessage("æ³¨å†ŒæˆåŠŸ!è¯·å»é‚®ç®±æ¿€æ´»!");
 		return "msg";
 	}
-	
+
 	/**
-	 * ÓÃ»§¼¤»îµÄ·½·¨
+	 * ç”¨æˆ·æ¿€æ´»çš„æ–¹æ³•
 	 */
-	public String active(){
-		//¸ù¾İ¼¤»îÂë²éÑ¯ÓÃ»§£¬
+	public String active() {
+		// æ ¹æ®æ¿€æ´»ç æŸ¥è¯¢ç”¨æˆ·:
 		User existUser = userService.findByCode(user.getCode());
-		if(existUser == null){
-			//¼¤»îÂë´íÎóµÄ
-			this.addActionMessage("¼¤»îÊ§°Ü£º¼¤»îÂë´íÎó");
-		}else{
-			//¼¤»î³É¹¦
-			//ĞŞ¸ÄÓÃ»§µÄ×´Ì¬
+		// åˆ¤æ–­
+		if (existUser == null) {
+			// æ¿€æ´»ç é”™è¯¯çš„
+			this.addActionMessage("æ¿€æ´»å¤±è´¥:æ¿€æ´»ç é”™è¯¯!");
+		} else {
+			// æ¿€æ´»æˆåŠŸ
+			// ä¿®æ”¹ç”¨æˆ·çš„çŠ¶æ€
 			existUser.setState(1);
 			existUser.setCode(null);
 			userService.update(existUser);
-			this.addActionMessage("¼¤»î³É¹¦£ºÇëµÇÂ¼");
+			this.addActionMessage("æ¿€æ´»æˆåŠŸ:è¯·å»ç™»å½•!");
 		}
 		return "msg";
 	}
+
+	/**
+	 * è·³è½¬åˆ°ç™»å½•é¡µé¢
+	 */
+	public String loginPage() {
+		return "loginPage";
+	}
+
+	/**
+	 * ç™»å½•çš„æ–¹æ³•
+	 */
+	public String login() {
+		User existUser = userService.login(user);
+		// åˆ¤æ–­
+		if (existUser == null) {
+			// ç™»å½•å¤±è´¥
+			this.addActionError("ç™»å½•å¤±è´¥:ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯æˆ–ç”¨æˆ·æœªæ¿€æ´»!");
+			return LOGIN;
+		} else {
+			// ç™»å½•æˆåŠŸ
+			// å°†ç”¨æˆ·çš„ä¿¡æ¯å­˜å…¥åˆ°sessionä¸­
+			ServletActionContext.getRequest().getSession()
+					.setAttribute("existUser", existUser);
+			// é¡µé¢è·³è½¬
+			return "loginSuccess";
+		}
 	
+	}
+	
+	/**
+	 * ç”¨æˆ·é€€å‡ºçš„æ–¹æ³•
+	 */
+	public String quit(){
+		// é”€æ¯session
+		ServletActionContext.getRequest().getSession().invalidate();
+		return "quit";
+	}
+
 }

@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
+import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -11,50 +12,48 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMessage.RecipientType;
 
 /**
- * ÓÊ¼ş·¢ËÍ¹¤¾ßÀà
- * @author Administrator
+ * é‚®ä»¶å‘é€å·¥å…·ç±»
+ * @author ä¼ æ™º.éƒ­å˜‰
  *
  */
-public class MailUtils {
-
+public class MailUitls {
 	/**
-	 * ·¢ËÍÓÊ¼şµÄ·½·¨
-	 * @param toÊÕ¼şÈË
-	 * @param code¼¤»îÂë
+	 * å‘é€é‚®ä»¶çš„æ–¹æ³•
+	 * @param to	:æ”¶ä»¶äºº
+	 * @param code	:æ¿€æ´»ç 
 	 */
 	public static void sendMail(String to,String code){
 		/**
-		 * 1.»ñµÃÒ»¸öSession¶ÔÏó
-		 * 2.´´½¨Ò»¸ö´ú±íÓÊ¼şµÄ¶ÔÏóMessage
-		 * 3.·¢ËÍÓÊ¼şTransport
+		 * 1.è·å¾—ä¸€ä¸ªSessionå¯¹è±¡.
+		 * 2.åˆ›å»ºä¸€ä¸ªä»£è¡¨é‚®ä»¶çš„å¯¹è±¡Message.
+		 * 3.å‘é€é‚®ä»¶Transport
 		 */
-		
-		//1.»ñµÃÁ´½Ó¶ÔÏó
+		// 1.è·å¾—è¿æ¥å¯¹è±¡
 		Properties props = new Properties();
 		props.setProperty("mail.host", "localhost");
 		Session session = Session.getInstance(props, new Authenticator() {
-			
+
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				
-				return new PasswordAuthentication("service@shop.com","111");
+				return new PasswordAuthentication("service@shop.com", "111");
 			}
+			
 		});
-		//´´½¨Ò»¸öÓÊ¼ş¶ÔÏó
+		// 2.åˆ›å»ºé‚®ä»¶å¯¹è±¡:
 		Message message = new MimeMessage(session);
-		//ÉèÖÃ·¢¼şÈË
+		// è®¾ç½®å‘ä»¶äºº:
 		try {
 			message.setFrom(new InternetAddress("service@shop.com"));
-			//ÉèÖÃÊÕ¼şÈË
+			// è®¾ç½®æ”¶ä»¶äºº:
 			message.addRecipient(RecipientType.TO, new InternetAddress(to));
-			//³­ËÍCC ÃÜËÍBCC
-			message.setSubject("À´×Ô¹ºÎïÌìÌÃµÄ¹Ù·½¼¤»îÓÊ¼ş");
-			//ÉèÖÃÓÊ¼şµÄÕıÎÄ
-			message.setContent("<h1>À´×Ô¹ºÎïÌìÌÃµÄ¹Û·¨¼¤»îÓÊ¼ş£¡µã»÷ÏÂÃæÁ´½ÓÍê³É¼¤»î²Ù×÷</h1><h3><a href='http://192.168.0.101/shop/user_active.action?code="+code+"'>http://192.168.0.101/shop/user_active.action?code="+code + "</a></h3>", "text/html;charset=UTF-8");
-			//3.·¢ËÍÓÊ¼ş
+			// æŠ„é€ CC   å¯†é€BCC
+			// è®¾ç½®æ ‡é¢˜
+			message.setSubject("æ¥è‡ªè´­ç‰©å¤©å ‚ä¼ æ™ºå•†åŸå®˜æ–¹æ¿€æ´»é‚®ä»¶");
+			// è®¾ç½®é‚®ä»¶æ­£æ–‡:
+			message.setContent("<h1>è´­ç‰©å¤©å ‚ä¼ æ™ºå•†åŸå®˜æ–¹æ¿€æ´»é‚®ä»¶!ç‚¹ä¸‹é¢é“¾æ¥å®Œæˆæ¿€æ´»æ“ä½œ!</h1><h3><a href='http://192.168.36.103:8080/shop/user_active.action?code="+code+"'>http://192.168.36.103:8080/shop/user_active.action?code="+code+"</a></h3>", "text/html;charset=UTF-8");
+			// 3.å‘é€é‚®ä»¶:
 			Transport.send(message);
 		} catch (AddressException e) {
 			e.printStackTrace();
@@ -65,6 +64,6 @@ public class MailUtils {
 	}
 	
 	public static void main(String[] args) {
-		sendMail("bbb@shop.com","1111111111111111");
+		sendMail("aaa@shop.com","11111111111111");
 	}
 }

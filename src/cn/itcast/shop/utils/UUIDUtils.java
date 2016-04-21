@@ -3,17 +3,16 @@ package cn.itcast.shop.utils;
 import java.util.UUID;
 
 /**
- * Éú³ÉËæ»ú×Ö·û´®µÄ¹¤¾ßÀà
- * @author Administrator
+ * ç”Ÿæˆéšæœºå­—ç¬¦ä¸²çš„å·¥å…·ç±»
+ * @author ä¼ æ™º.éƒ­å˜‰
  *
  */
 public class UUIDUtils {
-	
 	/**
-	 * »ñµÃËæ»ú×Ö·û´®
+	 * è·å¾—éšæœºçš„å­—ç¬¦ä¸²
 	 * @return
 	 */
 	public static String getUUID(){
-		return UUID.randomUUID().toString().replace("-","");
+		return UUID.randomUUID().toString().replace("-", "");
 	}
 }
