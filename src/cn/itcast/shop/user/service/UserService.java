@@ -31,5 +31,16 @@ public class UserService {
 			userDao.save(user);
 			MailUtils.sendMail(user.getEmail(), code);
 		}
+
+		//业务层根据激活码查询用户
+		public User findByCode(String code) {
+			
+			return userDao.findByCode(code);
+		}
+
+		public void update(User existUser) {
+			userDao.update(existUser);
+			
+		}
 		
 }
