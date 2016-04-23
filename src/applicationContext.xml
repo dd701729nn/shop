@@ -42,6 +42,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>cn/itcast/shop/user/vo/User.hbm.xml</value>
+				<value>cn/itcast/shop/category/vo/Category.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -59,8 +60,10 @@
 	
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="cn.itcast.shop.index.action.IndexAction" scope="prototype">
-	
+		<property name="categoryService" ref="categoryService"/>
 	</bean>
+	
+	
 	
 	<!-- 配置验证码Action -->
 	<bean id="checkImgAction" class="cn.itcast.shop.user.action.CheckImgAction" scope="prototype">
@@ -78,11 +81,17 @@
 	<bean id="userService" class="cn.itcast.shop.user.service.UserService">
 		<property name="userDao" ref="userDao"/>
 	</bean>
+	<bean id="categoryService" class="cn.itcast.shop.category.service.CategoryService">
+		<property name="categoryDao" ref="categoryDao"/>
+	</bean>
 	
 	
 	
 	<!-- Dao的配置  ===========================-->
 	<bean id="userDao" class="cn.itcast.shop.user.dao.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="categoryDao" class="cn.itcast.shop.category.dao.CategoryDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 </beans>
