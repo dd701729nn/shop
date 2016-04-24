@@ -4,6 +4,9 @@ import java.util.List;
 
 import cn.itcast.shop.category.service.CategoryService;
 import cn.itcast.shop.category.vo.Category;
+import cn.itcast.shop.product.service.ProductService;
+import cn.itcast.shop.product.vo.Product;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -15,11 +18,19 @@ import com.opensymphony.xwork2.ActionSupport;
 public class IndexAction extends ActionSupport{
 	// 注入一级分类的Service:
 	private CategoryService categoryService;
-	// 注入商品的Service
 	
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
+	
+	//注入商品的Service
+	private ProductService productService;
+	
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
+	}
+
+
 
 	/**
 	 * 执行的访问首页的方法:
@@ -29,9 +40,13 @@ public class IndexAction extends ActionSupport{
 		List<Category> cList = categoryService.findAll();
 		// 将一级分类存入到Session的范围:
 		ActionContext.getContext().getSession().put("cList", cList);
-		
+		//查询热门商品
+		List<Product> hList = productService.findHot();
+		ActionContext.getContext().getValueStack().set("hList", hList);
 		return "index";
 	}
+	
+	
 	
 	
 }

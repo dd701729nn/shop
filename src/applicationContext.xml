@@ -43,6 +43,7 @@
 			<list>
 				<value>cn/itcast/shop/user/vo/User.hbm.xml</value>
 				<value>cn/itcast/shop/category/vo/Category.hbm.xml</value>
+				<value>cn/itcast/shop/product/vo/Product.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -61,6 +62,7 @@
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="cn.itcast.shop.index.action.IndexAction" scope="prototype">
 		<property name="categoryService" ref="categoryService"/>
+		<property name="productService" ref="productService"/>
 	</bean>
 	
 	
@@ -84,6 +86,9 @@
 	<bean id="categoryService" class="cn.itcast.shop.category.service.CategoryService">
 		<property name="categoryDao" ref="categoryDao"/>
 	</bean>
+	<bean id="productService" class="cn.itcast.shop.product.service.ProductService">
+		<property name="productDao" ref="productDao"/>
+	</bean>
 	
 	
 	
@@ -92,6 +97,9 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="categoryDao" class="cn.itcast.shop.category.dao.CategoryDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="productDao" class="cn.itcast.shop.product.dao.ProductDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 </beans>
