@@ -28,6 +28,11 @@
 			<result name="checkcodeFail">/WEB-INF/jsp/regist.jsp</result>
 		</action>
 		
+		<!-- 配置商品模块的Action -->
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="findByPid">/WEB-INF/jsp/product.jsp</result>
+		</action>
+		
 		<!-- 验证码Action -->
 		<action name="checkImg" class="checkImgAction"></action>
 	</package>

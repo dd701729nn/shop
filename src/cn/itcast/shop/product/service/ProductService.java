@@ -30,6 +30,14 @@ public class ProductService {
 		
 		return productDao.findNew();
 	}
+
+	//根据商品Id查询商品
+	public Product findByPid(Integer pid) {
+		
+		return productDao.findByPid(pid);
+	}
+
+	
 	
 	
 }

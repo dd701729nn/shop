@@ -38,4 +38,9 @@ public class ProductDao extends HibernateDaoSupport{
 		return list;
 	}
 
+	//根据商品ID查询商品
+	public Product findByPid(Integer pid) {
+		return this.getHibernateTemplate().get(Product.class, pid);
+	}
+
 }

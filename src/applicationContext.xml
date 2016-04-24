@@ -78,6 +78,11 @@
 		<property name="userService" ref="userService"/>
 	</bean>
 	
+	<!-- 商品模块的Action -->
+	<bean id="productAction" class="cn.itcast.shop.product.action.ProductAction" scope="prototype">
+		<property name="productService" ref="productService"></property>
+	</bean>
+	
 	
 	<!-- Service的配置  ===========================-->
 	<bean id="userService" class="cn.itcast.shop.user.service.UserService">
