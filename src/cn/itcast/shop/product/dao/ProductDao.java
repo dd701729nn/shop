@@ -27,4 +27,15 @@ public class ProductDao extends HibernateDaoSupport{
 		return list;
 	}
 
+	public List<Product> findNew() {
+		//使用离线条件查询
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Product.class);
+		//按日期进行倒序排序
+		detachedCriteria.addOrder(Order.desc("pdate"));
+		//执行查询
+		List<Product> list = this.getHibernateTemplate().findByCriteria(detachedCriteria, 0, 10);
+		
+		return list;
+	}
+
 }

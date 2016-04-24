@@ -25,6 +25,11 @@ public class ProductService {
 	public List<Product> findHot(){
 		return productDao.findHot();
 	}
+
+	public List<Product> findNew() {
+		
+		return productDao.findNew();
+	}
 	
 	
 }

@@ -43,10 +43,11 @@ public class IndexAction extends ActionSupport{
 		//查询热门商品
 		List<Product> hList = productService.findHot();
 		ActionContext.getContext().getValueStack().set("hList", hList);
+		//查询最新商品
+		List<Product> nList = productService.findNew();
+		ActionContext.getContext().getValueStack().set("nList", nList);
 		return "index";
 	}
-	
-	
 	
 	
 }
