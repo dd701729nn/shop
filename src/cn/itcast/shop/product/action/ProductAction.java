@@ -16,7 +16,14 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 
 	//用于接受数据的模型驱动
 	private Product product = new Product();
+
+	private Integer cid;
 	
+	
+	public void setCid(Integer cid) {
+		this.cid = cid;
+	}
+
 	public void setProduct(Product product) {
 		this.product = product;
 	}
@@ -38,4 +45,8 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		product = productService.findByPid(product.getPid());
 		return "findByPid";
 	}
+	
+	//根据分类ID进查询
+	
+	
 }

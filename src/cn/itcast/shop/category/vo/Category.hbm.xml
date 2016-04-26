@@ -10,5 +10,10 @@
 	
 		<property name="cname"/>
 		
+		<!-- 配置二级分类的集合 -->
+		<set name="categoryseconds">
+			<key column="cid"/>
+			<one-to-many class="cn.itcast.shop.categorysecond.vo.CategorySecond"/>
+		</set>
 	</class>
 </hibernate-mapping>
