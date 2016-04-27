@@ -15,5 +15,6 @@
 		<property name="is_hot"/>
 		<property name="pdate"/>
 		
+		<many-to-one lazy="false" name="categorySecond" class="cn.itcast.shop.categorysecond.vo.CategorySecond" column="csid"></many-to-one>
 	</class>
 </hibernate-mapping>

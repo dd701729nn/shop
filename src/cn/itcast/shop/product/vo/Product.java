@@ -1,6 +1,10 @@
 package cn.itcast.shop.product.vo;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import cn.itcast.shop.categorysecond.vo.CategorySecond;
 
 
 /**
@@ -17,6 +21,24 @@ public class Product {
 	private Integer is_hot;
 	private Date pdate;
 	// 二级分类的外键:使用二级分类的对象.
+	private CategorySecond categorySecond;
+	
+	//配置商品的集合
+	private Set<Product> products = new HashSet<Product>();
+	
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+	public CategorySecond getCategorySecond() {
+		return categorySecond;
+	}
+	public void setCategorySecond(CategorySecond categorySecond) {
+		this.categorySecond = categorySecond;
+	}
 	public Integer getPid() {
 		return pid;
 	}

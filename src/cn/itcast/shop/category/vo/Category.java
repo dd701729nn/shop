@@ -5,12 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import cn.itcast.shop.categorysecond.vo.CategorySecond;
-import cn.itcast.shop.product.vo.Product;
-
 
 /**
  * 一级分类的实体类对象
- * @author 传智.郭嘉
  *
  */
 public class Category implements Serializable{
@@ -19,12 +16,6 @@ public class Category implements Serializable{
 	// 一级分类中存放二级分类的集合:
 	private Set<CategorySecond> categorySeconds = new HashSet<CategorySecond>();
 	
-	public Set<CategorySecond> getCategorySeconds() {
-		return categorySeconds;
-	}
-	public void setCategorySeconds(Set<CategorySecond> categorySeconds) {
-		this.categorySeconds = categorySeconds;
-	}
 	public Integer getCid() {
 		return cid;
 	}
@@ -36,6 +27,12 @@ public class Category implements Serializable{
 	}
 	public void setCname(String cname) {
 		this.cname = cname;
+	}
+	public Set<CategorySecond> getCategorySeconds() {
+		return categorySeconds;
+	}
+	public void setCategorySeconds(Set<CategorySecond> categorySeconds) {
+		this.categorySeconds = categorySeconds;
 	}
 	
 }
