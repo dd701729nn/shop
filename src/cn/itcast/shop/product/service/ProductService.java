@@ -93,5 +93,5 @@ public class ProductService {
 		pageBean.setList(list);
 		return pageBean;
 	}
-	
+
 }

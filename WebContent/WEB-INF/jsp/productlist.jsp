@@ -43,8 +43,7 @@
 						</dt>
 						<s:iterator var="cs" value="#c.categorySeconds">
 							<dd>
-								<a
-									href="${ pageContext.request.contextPath }/product_findByCsid.action?csid=<s:property value="#cs.csid"/>&page=1"><s:property
+								<a href="${ pageContext.request.contextPath }/product_findByCsid.action?csid=<s:property value="#cs.csid"/>&page=1"><s:property
 										value="#cs.csname" /></a>
 							</dd>
 						</s:iterator>
@@ -55,13 +54,13 @@
 		<div class="span18 last">
 
 			<form id="productForm"
-				action="${pageContext.request.contextPath}/image/蔬菜 - Powered By Mango Team.htm"
+				action="${pageContext.request.contextPath}/product_findByCid.action?cid=<s:property value="#c.cid"/>&page=1"
 				method="get">
 
 				<div id="result" class="result table clearfix">
 					<ul>
 						<s:iterator var="p" value="pageBean.list">
-							<li><a href="./京华商城分页面.htm"> <img
+							<li><a href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#p.pid"/>"> <img
 									src="${pageContext.request.contextPath}/<s:property value="#p.image"/>"
 									width="170" height="170" style="display: inline-block;">
 
