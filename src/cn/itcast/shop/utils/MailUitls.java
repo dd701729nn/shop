@@ -15,7 +15,6 @@ import javax.mail.internet.MimeMessage;
 
 /**
  * 邮件发送工具类
- * @author 传智.郭嘉
  *
  */
 public class MailUitls {
@@ -50,9 +49,9 @@ public class MailUitls {
 			message.addRecipient(RecipientType.TO, new InternetAddress(to));
 			// 抄送 CC   密送BCC
 			// 设置标题
-			message.setSubject("来自购物天堂传智商城官方激活邮件");
+			message.setSubject("来自购物商城官方激活邮件");
 			// 设置邮件正文:
-			message.setContent("<h1>购物天堂传智商城官方激活邮件!点下面链接完成激活操作!</h1><h3><a href='http://192.168.36.103:8080/shop/user_active.action?code="+code+"'>http://192.168.36.103:8080/shop/user_active.action?code="+code+"</a></h3>", "text/html;charset=UTF-8");
+			message.setContent("<h1>购物商城官方激活邮件!点下面链接完成激活操作!</h1><h3><a href='http://192.168.36.103:8080/shop/user_active.action?code="+code+"'>http://192.168.36.103:8080/shop/user_active.action?code="+code+"</a></h3>", "text/html;charset=UTF-8");
 			// 3.发送邮件:
 			Transport.send(message);
 		} catch (AddressException e) {
@@ -63,7 +62,4 @@ public class MailUitls {
 		
 	}
 	
-	public static void main(String[] args) {
-		sendMail("aaa@shop.com","11111111111111");
-	}
 }

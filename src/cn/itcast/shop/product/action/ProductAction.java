@@ -72,5 +72,9 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 			return "findByCid";
 		}
 
+		public Integer getCid() {
+			return cid;
+		}
+
 	
 }
