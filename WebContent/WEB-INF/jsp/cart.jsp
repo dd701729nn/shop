@@ -64,7 +64,7 @@
 								<span class="subtotal">￥<s:property value="#cartItem.soubtotal"/></span>
 							</td>
 							<td>
-								<a href="javascript:;" class="delete">删除</a>
+								<a href="${pageContext.request.contextPath }/cart_removeCart.action?pid=<s:property value="#cartItem.product.pid"/>" class="delete">删除</a>
 							</td>
 						</tr>
 						</s:iterator>
