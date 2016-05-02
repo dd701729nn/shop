@@ -1,6 +1,7 @@
 package cn.itcast.shop.order.vo;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
