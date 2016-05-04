@@ -1,31 +1,25 @@
 package cn.itcast.shop.order.vo;
 
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import cn.itcast.shop.user.vo.User;
 
-/**
- * 订单模块的实体类对象
- * @author Administrator
- *
- */
-public class Order {
 
+public class Order {
 	private Integer oid;
 	private Double total;
 	private Date ordertime;
-	private Integer state;
+	private Integer state;// 1:未付款   2:订单已经付款   3:已经发货   4:订单结束
 	private String name;
-	private String addr;
 	private String phone;
-	
-	//订单所属用户
+	private String addr;
+	// 用户的外键:对象
 	private User user;
-	//订单中所属的多个订单项
+	// 配置订单项的集合
 	private Set<OrderItem> orderItems = new HashSet<OrderItem>();
+	
 	public Integer getOid() {
 		return oid;
 	}
@@ -56,17 +50,17 @@ public class Order {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAddr() {
-		return addr;
-	}
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 	public User getUser() {
 		return user;
@@ -80,6 +74,5 @@ public class Order {
 	public void setOrderItems(Set<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
-	
 	
 }

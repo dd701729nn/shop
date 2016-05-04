@@ -1,5 +1,6 @@
 package cn.itcast.shop.order.action;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.struts2.ServletActionContext;
@@ -48,7 +49,7 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 		//设置订单的状态
 		order.setState(1);
 		//设置订单的时间
-		order.setOrdertime(new Date());
+//		order.setOrdertime(new Date());
 		//设置订单关联的客户
 		User existUser = (User) ServletActionContext.getRequest().getSession().getAttribute("existUser");
 		if(existUser == null){
@@ -69,6 +70,8 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 		}
 		//清空购物车
 		orderService.save(order);
+		//2.将订单对象显示在页面上
+		//通过值栈
 		return "saveSuccess";
 	}
 

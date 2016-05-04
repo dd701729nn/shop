@@ -3,16 +3,17 @@ package cn.itcast.shop.order.vo;
 import cn.itcast.shop.product.vo.Product;
 
 /**
- * 订单模块：订单项的实体类对象
- * @author Administrator
+ * 订单项的实体
+ * @author 传智.郭嘉
  *
  */
 public class OrderItem {
-
 	private Integer itemid;
 	private Integer count;
 	private Double subtotal;
+	// 商品外键:对象
 	private Product product;
+	// 订单外键:对象
 	private Order order;
 	public Integer getItemid() {
 		return itemid;
@@ -44,6 +45,5 @@ public class OrderItem {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	
 	
 }
