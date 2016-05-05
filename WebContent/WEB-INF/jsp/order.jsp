@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-<title>订单页面</title>
+<title>我的订单页面</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/css/cart.css" rel="stylesheet" type="text/css"/>
 
@@ -27,10 +27,10 @@
 	<img src="${pageContext.request.contextPath}/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障"/>
 </div>	
 </div>
-
+	
 	<%@ include file="menu.jsp" %>
 	
-</div>
+</div>	
 
 <div class="container cart">
 
@@ -48,8 +48,7 @@
 				<table>
 					<tbody>
 					<tr>
-						<th colspan="5"	>订单状态:<s:property value="model.oid"/></th>
-						
+						<th colspan="5">订单编号:<s:property value="model.oid"/>&nbsp;&nbsp;&nbsp;&nbsp;</th>
 					</tr>
 					<tr>
 						<th>图片</th>
@@ -58,14 +57,13 @@
 						<th>数量</th>
 						<th>小计</th>
 					</tr>
-					<s:iterator value="model.orderItems" var="orderItem">
+						<s:iterator var="orderItem" value="model.orderItems">
 						<tr>
 							<td width="60">
-								<input type="hidden" name="id" value="22"/>
-								<img src="${pageContext.request.contextPath }/<s:property value="#orderItem.product.image"/>"/>
+								<img src="${ pageContext.request.contextPath }/<s:property value="#orderItem.product.image"/>"/>
 							</td>
 							<td>
-								<a target="_blank"><s:property value="#orderItem.product.pname"/></a>
+								<s:property value="#orderItem.product.pname"/>
 							</td>
 							<td>
 								<s:property value="#orderItem.product.shop_price"/>
@@ -78,7 +76,7 @@
 							</td>
 							
 						</tr>
-					</s:iterator>
+						</s:iterator>
 				</tbody>
 			</table>
 				<dl id="giftItems" class="hidden" style="display: none;">
@@ -87,38 +85,38 @@
 					<em id="promotion"></em>
 					商品金额: <strong id="effectivePrice">￥<s:property value="model.total"/>元</strong>
 				</div>
-			<form id="orderForm" action="${pageContext.request.contextPath }/order_payOrder.action" method="post">
+			<form id="orderForm" action="${ pageContext.request.contextPath }/order_payOrder.action" method="post">
 				<input type="hidden" name="oid" value="<s:property value="model.oid"/>"/>
 				<div class="span24">
 					<p>
-							收货地址：<input name="order.user.addr" value="<s:property value="model.user.addr"/>" type="text" value="" style="width:350px" />
+							收货地址：<input name="addr" type="text" value="<s:property value="model.user.addr"/>" style="width:350px" />
 								<br />
-							收货人&nbsp;&nbsp;&nbsp;：<input name="order.user.username" value="<s:property value="model.user.username"/>" type="text" value="" style="width:150px" />
+							收货人&nbsp;&nbsp;&nbsp;：<input name="name" type="text" value="<s:property value="model.user.name"/>" style="width:150px" />
 								<br /> 
-							联系方式：<input name="order.user.phone" value="<s:property value="model.user.phone"/>" type="text"value="" style="width:150px" />
+							联系方式：<input name="phone" type="text"value="<s:property value="model.user.phone"/>" style="width:150px" />
 
 						</p>
 						<hr />
 						<p>
 							选择银行：<br/>
 							<input type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked"/>工商银行
-							<img src="${pageContext.request.contextPath }/bank_img/icbc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="${ pageContext.request.contextPath }/bank_img/icbc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="pd_FrpId" value="BOC-NET-B2C"/>中国银行
-							<img src="${pageContext.request.contextPath }/bank_img/bc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="${ pageContext.request.contextPath }/bank_img/bc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="pd_FrpId" value="ABC-NET-B2C"/>农业银行
-							<img src="${pageContext.request.contextPath }/bank_img/abc.bmp" align="middle"/>
+							<img src="${ pageContext.request.contextPath }/bank_img/abc.bmp" align="middle"/>
 							<br/>
 							<input type="radio" name="pd_FrpId" value="BOCO-NET-B2C"/>交通银行
-							<img src="${pageContext.request.contextPath }/bank_img/bcc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="${ pageContext.request.contextPath }/bank_img/bcc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="pd_FrpId" value="PINGANBANK-NET"/>平安银行
-							<img src="${pageContext.request.contextPath }/bank_img/pingan.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="${ pageContext.request.contextPath }/bank_img/pingan.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="pd_FrpId" value="CCB-NET-B2C"/>建设银行
-							<img src="${pageContext.request.contextPath }/bank_img/ccb.bmp" align="middle"/>
+							<img src="${ pageContext.request.contextPath }/bank_img/ccb.bmp" align="middle"/>
 							<br/>
 							<input type="radio" name="pd_FrpId" value="CEB-NET-B2C"/>光大银行
-							<img src="${pageContext.request.contextPath }/bank_img/guangda.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="${ pageContext.request.contextPath }/bank_img/guangda.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C"/>招商银行
-							<img src="${pageContext.request.contextPath }/bank_img/cmb.bmp" align="middle"/>
+							<img src="${ pageContext.request.contextPath }/bank_img/cmb.bmp" align="middle"/>
 						</p>
 						<hr />
 						<p style="text-align:right">

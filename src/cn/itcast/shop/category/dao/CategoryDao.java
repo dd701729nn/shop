@@ -19,5 +19,25 @@ public class CategoryDao extends HibernateDaoSupport{
 		List<Category> list = this.getHibernateTemplate().find(hql);
 		return list;
 	}
+
+	//DAO保存一级分类的
+	public void save(Category category) {
+		this.getHibernateTemplate().save(category);
+		
+	}
+
+	//根据cid查询以及分类的方法
+	public Category findByCid(Integer cid) {
+		return this.getHibernateTemplate().get(Category.class,cid);
+	}
+
+	//DAO层删除一级分类的方法
+	public void delete(Category category) {
+		this.getHibernateTemplate().delete(category);
+	}
+
+	public void update(Category category) {
+		this.getHibernateTemplate().update(category);
+	}
 	
 }

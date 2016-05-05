@@ -47,6 +47,7 @@
 				<value>cn/itcast/shop/categorysecond/vo/CategorySecond.hbm.xml</value>
 				<value>cn/itcast/shop/order/vo/Order.hbm.xml</value>
 				<value>cn/itcast/shop/order/vo/OrderItem.hbm.xml</value>
+				<value>cn/itcast/shop/adminuser/vo/AdminUser.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -60,7 +61,7 @@
 	<!-- 开启注解事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-	<!-- Action的配置 ===========================-->
+	<!-- Action的配置 -->
 	
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="cn.itcast.shop.index.action.IndexAction" scope="prototype">
@@ -96,8 +97,17 @@
 		<property name="orderService" ref="orderService"/>
 	</bean>
 	
+	<!-- 后台登陆的Action -->
+	<bean id="adminUserAction" class="cn.itcast.shop.adminuser.action.AdminUserAction" scope="prototype">
+		<property name="adminUserService" ref="adminUserService"/>
+	</bean>
 	
-	<!-- Service的配置  ===========================-->
+	<!-- 后台一级分类管理的Action -->
+	<bean id="adminCategoryAction" class="cn.itcast.shop.category.adminaction.AdminCategoryAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+	</bean>
+	
+	<!-- Service的配置  -->
 	<bean id="userService" class="cn.itcast.shop.user.service.UserService">
 		<property name="userDao" ref="userDao"/>
 	</bean>
@@ -111,9 +121,13 @@
 		<property name="orderDao" ref="orderDao"/>
 	</bean>
 	
+	<!-- 后台登陆service的配置 -->
+	<bean id="adminUserService" class="cn.itcast.shop.adminuser.service.AdminUserService">
+		<property name="adminUserDao" ref="adminUserDao"/>
+	</bean>	
 	
 	
-	<!-- Dao的配置  ===========================-->
+	<!-- Dao的配置 -->
 	<bean id="userDao" class="cn.itcast.shop.user.dao.UserDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
@@ -124,6 +138,11 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="orderDao" class="cn.itcast.shop.order.dao.OrderDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- 后台登陆Dao的配置 -->
+	<bean id="adminUserDao" class="cn.itcast.shop.adminuser.dao.AdminUserDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 </beans>
