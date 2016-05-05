@@ -3,8 +3,8 @@ package cn.itcast.shop.order.vo;
 import cn.itcast.shop.product.vo.Product;
 
 /**
- * 订单项的实体
- * @author 传智.郭嘉
+ * 订单项实体类
+ * @author Administrator
  *
  */
 public class OrderItem {

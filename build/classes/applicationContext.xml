@@ -92,7 +92,7 @@
 	</bean>
 	
 	<!-- 订单模块的Action -->
-	<bean id="orderAction" class="cn.itcast.shop.order.action.OrderAction">
+	<bean id="orderAction" class="cn.itcast.shop.order.action.OrderAction" scope="prototype">
 		<property name="orderService" ref="orderService"/>
 	</bean>
 	

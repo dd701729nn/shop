@@ -15,9 +15,9 @@ public class Order {
 	private String name;
 	private String phone;
 	private String addr;
-	// 用户的外键:对象
+	//订单所属的订单项
 	private User user;
-	// 配置订单项的集合
+	//
 	private Set<OrderItem> orderItems = new HashSet<OrderItem>();
 	
 	public Integer getOid() {

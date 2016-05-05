@@ -7,20 +7,20 @@
 		<id name="oid">
 			<generator class="native"/>
 		</id>
-		
+		<!-- 普通属性 -->
 		<property name="total"/>
 		<property name="ordertime"/>
 		<property name="state"/>
 		<property name="name"/>
-		<property name="phone"/>
 		<property name="addr"/>
+		<property name="phone"/>
 		
-		<!-- 订单与用户关联配置 -->
+		<!-- 关联关系：与用户的关系 -->
 		<many-to-one name="user" lazy="false" class="cn.itcast.shop.user.vo.User" column="uid"/>
 	
-		<!-- 订单与订单项关联配置 -->
+		<!-- 关联关系：与订单项的关系-->
 		<set name="orderItems" lazy="false" cascade="save-update">
-			<key column="oid"/>
+			<key column="uid"/>
 			<one-to-many class="cn.itcast.shop.order.vo.OrderItem"/>
 		</set>
 	</class>

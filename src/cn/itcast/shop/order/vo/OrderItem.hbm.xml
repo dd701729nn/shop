@@ -11,8 +11,9 @@
 		<property name="count"/>
 		<property name="subtotal"/>
 		
-		<many-to-one name="product" lazy="false" class="cn.itcast.shop.product.vo.Product" column="pid"></many-to-one>
-		
+		<!-- 关联关系：与商品的关系 -->
+		<many-to-one name="product" lazy="false" class="cn.itcast.shop.product.vo.Product" column="pid"/>
+		<!-- 关联关系：与订单的关系 -->
 		<many-to-one name="order" class="cn.itcast.shop.order.vo.Order" column="oid"/>
 	</class>
 </hibernate-mapping>

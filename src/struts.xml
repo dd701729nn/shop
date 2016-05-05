@@ -13,12 +13,12 @@
 			<result name="login">/WEB-INF/jsp/login.jsp</result>
 		</global-results>
 	
-		<!-- 配置首页访问的Action -->
+		<!-- 首页访问的Action -->
 		<action name="index" class="indexAction">
 			<result name="index">/WEB-INF/jsp/index.jsp</result>
 		</action>
 		
-		<!-- 配置用户模块的Action -->
+		<!-- 用户模块的Action -->
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
 			<result name="input">/WEB-INF/jsp/regist.jsp</result>
@@ -28,14 +28,14 @@
 			<result name="checkcodeFail">/WEB-INF/jsp/regist.jsp</result>
 		</action>
 		
-		<!-- 配置商品模块的Action -->
+		<!-- 商品模块的Action -->
 		<action name="product_*" class="productAction" method="{1}">
 			<result name="findByPid">/WEB-INF/jsp/product.jsp</result>
 			<result name="findByCid">/WEB-INF/jsp/productList.jsp</result>
 			<result name="findByCsid">/WEB-INF/jsp/productList.jsp</result>
 		</action>
 		
-		<!-- 购物的Action -->
+		<!-- 购物模块的Action -->
 		<action name="cart_*" class="cartAction" method="{1}">
 			<result name="addCart">/WEB-INF/jsp/cart.jsp</result>
 			<result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
@@ -43,7 +43,7 @@
 			<result name="myCart">/WEB-INF/jsp/cart.jsp</result>
 		</action>
 		
-		<!-- 订单的Action -->
+		<!-- 订单模块的Action -->
 		<action name="order_*" class="orderAction" method="{1}">
 			<result name="saveSuccess">/WEB-INF/jsp/order.jsp</result>
 			<result name="findByUidSuccess">/WEB-INF/jsp/orderList.jsp</result>

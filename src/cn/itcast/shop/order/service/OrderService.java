@@ -18,7 +18,6 @@ public class OrderService {
 
 	//注入dao
 	private OrderDao orderDao;
-
 	public void setOrderDao(OrderDao orderDao) {
 		this.orderDao = orderDao;
 	}

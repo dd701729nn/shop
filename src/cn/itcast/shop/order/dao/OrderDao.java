@@ -14,6 +14,7 @@ import cn.itcast.shop.utils.PageHibernateCallback;
  */
 public class OrderDao extends HibernateDaoSupport{
 
+	//DAO层保存订单的方法
 	public void save(Order order) {
 		this.getHibernateTemplate().save(order);
 		
