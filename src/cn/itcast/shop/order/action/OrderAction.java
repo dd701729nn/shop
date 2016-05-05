@@ -1,8 +1,5 @@
 package cn.itcast.shop.order.action;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.apache.struts2.ServletActionContext;
 
 import cn.itcast.shop.cart.vo.Cart;
@@ -11,7 +8,9 @@ import cn.itcast.shop.order.service.OrderService;
 import cn.itcast.shop.order.vo.Order;
 import cn.itcast.shop.order.vo.OrderItem;
 import cn.itcast.shop.user.vo.User;
+import cn.itcast.shop.utils.PageBean;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -35,6 +34,13 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 		this.orderService = orderService;
 	}
 	
+	//接受page参数
+	private Integer page;
+	
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
 	//生成订单的方法
 	public String save(){
 		//调用Service完成数据库的插入操作
@@ -72,7 +78,25 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 		orderService.save(order);
 		//2.将订单对象显示在页面上
 		//通过值栈
+		cart.clearCart();
 		return "saveSuccess";
+	}
+	
+	//我的订单查询：
+	public String findByUid(){
+		//根据用户id查询
+		User user = (User) ServletActionContext.getRequest().getSession().getAttribute("existUser");
+		//调用service查询
+		PageBean<Order> pageBean = orderService.findByPageUid(user.getUid(),page);
+		//将分页数据显示到页面上
+		ActionContext.getContext().getValueStack().set("pageBean", pageBean);
+		return "findByUidSuccess";
+	}
+	
+	// 根据订单id查询订单:
+	public String findByOid() {
+		order = orderService.findByOid(order.getOid());
+		return "findByOidSuccess";
 	}
 
 }
