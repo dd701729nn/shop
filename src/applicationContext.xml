@@ -110,6 +110,7 @@
 	<!-- 后台二级分类管理的Action -->
 	<bean id="adminCategorySecondAction" class="cn.itcast.shop.categorysecond.adminaction.AdminCategorySecondAction" scope="prototype">
 		<property name="categorySecondService" ref="categorySecondService"/>
+		<property name="categoryService" ref="categoryService"></property>
 	</bean>
 	
 	<!-- Service的配置  -->

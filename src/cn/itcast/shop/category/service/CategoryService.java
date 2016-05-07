@@ -9,7 +9,6 @@ import cn.itcast.shop.category.vo.Category;
 
 /**
  * 一级分类的业务层对象
- * @author 传智.郭嘉
  *
  */
 @Transactional
