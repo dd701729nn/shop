@@ -8,8 +8,8 @@
 	</HEAD>
 	
 	<body>
-		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/adminCategory_update.action" method="post">
-			<input type="hidden" name="cid" value="<s:property value="model.cid"/>" />
+		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/adminCategory_update.action" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="cid" value="<s:property value="model.cid"/>"/>
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
 				<tr>
@@ -26,6 +26,7 @@
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
 						<input type="text" name="cname" value="<s:property value="model.cname"/>" id="userAction_save_do_logonName" class="bg"/>
+						<%--<s:textfield name="cname" value="%{model.cname}"/>--%>
 						</td>
 				</tr>
 			

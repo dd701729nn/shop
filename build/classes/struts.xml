@@ -65,6 +65,10 @@
 			<result name="updateSuccess" type="redirectAction">adminCategory_findAll.action</result>		
 		</action>
 		
+		<!-- 配置后台二级分类管理的Action -->
+		<action name="adminCategorySecond_*" class="adminCategorySecondAction" method="{1}">
+			<result name="findAll">/admin/categorysecond/list.jsp</result>
+		</action>
 		
 		<!-- 验证码Action -->
 		<action name="checkImg" class="checkImgAction"></action>
