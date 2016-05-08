@@ -19,7 +19,7 @@
 		<many-to-one name="user" lazy="false" class="cn.itcast.shop.user.vo.User" column="uid"/>
 	
 		<!-- 关联关系：与订单项的关系-->
-		<set name="orderItems" lazy="false" cascade="save-update">
+		<set name="orderItems" order-by="itemid" lazy="false" cascade="save-update">
 			<key column="uid"/>
 			<one-to-many class="cn.itcast.shop.order.vo.OrderItem"/>
 		</set>

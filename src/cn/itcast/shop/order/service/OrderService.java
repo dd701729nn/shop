@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.itcast.shop.order.dao.OrderDao;
 import cn.itcast.shop.order.vo.Order;
+import cn.itcast.shop.order.vo.OrderItem;
 import cn.itcast.shop.utils.PageBean;
 
 /**
@@ -63,6 +64,37 @@ public class OrderService {
 	public void update(Order currOrder) {
 		orderDao.update(currOrder);
 		
+	}
+
+	//业务层后台查询订单的方法
+	public PageBean<Order> findByPageUid(Integer page) {
+		PageBean<Order> pageBean = new PageBean<Order>();
+		//设置当前页数
+		pageBean.setPage(page);
+		//设置每页显示的记录数
+		int limit = 10;
+		pageBean.setLimit(limit);
+		//设置总记录数
+		int totalCount = orderDao.findByCount();
+		pageBean.setTotalCount(totalCount);
+		//设置总的页数
+		int totalPage = 0;
+		if(totalCount % limit == 0){
+			totalPage = totalCount / limit;
+		}else{
+			totalPage = totalCount / limit + 1;
+		}
+		pageBean.setTotalPage(totalPage);
+		//设置每页显示数据的集合
+		int begin = (page - 1)*limit;
+		List<Order> list = orderDao.findByPage(begin,limit);
+		pageBean.setList(list);
+		return pageBean;
+	}
+
+	//业务层完成根据订单id查询订单的方法
+	public List<OrderItem> findOrderItem(Integer oid) {
+		return orderDao.findOrderItem(oid);
 	}
 	
 	

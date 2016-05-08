@@ -184,6 +184,7 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order> {
 
 	// 修改订单的状态:
 	public String updateState() {
+		//根据订单id查询订单
 		Order currOrder = orderService.findByOid(order.getOid());
 		currOrder.setState(4);
 		orderService.update(currOrder);

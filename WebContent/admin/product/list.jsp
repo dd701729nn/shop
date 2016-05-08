@@ -60,7 +60,7 @@
 										删除
 									</td>
 								</tr>
-									<s:iterator var="p" value="pageBean.list" status="status">
+									<s:iterator var="product" value="pageBean.list" status="status">
 										<tr onmouseover="this.style.backgroundColor = 'white'"
 											onmouseout="this.style.backgroundColor = '#F5FAFE';">
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
@@ -69,15 +69,15 @@
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 												width="17%">
-												<img width="40" height="45" src="${ pageContext.request.contextPath }/<s:property value="#p.image"/>">
+												<img width="40" height="45" src="${ pageContext.request.contextPath }/<s:property value="#product.image"/>">
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 												width="17%">
-												<s:property value="#p.pname"/>
+												<s:property value="#product.pname"/>
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 												width="17%">
-												<s:property value="#p.shop_price"/>
+												<s:property value="#product.shop_price"/>
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 												width="17%">
@@ -89,13 +89,13 @@
 												</s:else>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
-												<a href="${ pageContext.request.contextPath }/adminProduct_edit.action?pid=<s:property value="#p.pid"/>">
+												<a href="${ pageContext.request.contextPath }/adminProduct_edit.action?pid=<s:property value="#product.pid"/>">
 													<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 									
 											<td align="center" style="HEIGHT: 22px">
-												<a href="${ pageContext.request.contextPath }/adminProduct_delete.action?pid=<s:property value="#p.pid"/>">
+												<a href="${ pageContext.request.contextPath }/adminProduct_delete.action?pid=<s:property value="#product.pid"/>">
 													<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 												</a>
 											</td>
